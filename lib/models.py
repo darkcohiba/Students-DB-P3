@@ -11,7 +11,7 @@ Base = declarative_base()
 class Student(Base):
     __tablename__ = 'students'
 
-    student_id = Column(Integer(), primary_key=True)
+    student_id = Column(Integer(),ForeignKey('teachers.teacher_id'), primary_key=True)
     first_name = Column(String())
     last_name = Column(String())
     teacher_id = Column(Integer())
@@ -24,7 +24,7 @@ class Student(Base):
 class Teacher(Base):
     __tablename__ = 'teachers'
 
-    teacher_id = Column(Integer(), ForeignKey('students.teacher_id'), primary_key=True )
+    teacher_id = Column(Integer(), primary_key=True )
     first_name = Column(String())
     last_name = Column(String())
 
