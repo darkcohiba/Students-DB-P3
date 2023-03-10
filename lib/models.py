@@ -16,11 +16,21 @@ class Student(Base):
     last_name = Column(String())
     teacher_id = Column(Integer())
 
+    def __repr__(self):
+        return f'student first name: {self.first_name}, last name: {self.last_name}'
+
 
 
 class Teacher(Base):
     __tablename__ = 'teachers'
 
-    teacher_id = Column(Integer(), ForeignKey('student.teacher_id'), primary_key=True )
+    teacher_id = Column(Integer(), ForeignKey('students.teacher_id'), primary_key=True )
     first_name = Column(String())
     last_name = Column(String())
+
+
+    def __repr__(self):
+        return f'teacher first name: {self.first_name}, last name: {self.last_name}'
+
+
+Base.metadata.create_all(engine)
